@@ -4,6 +4,8 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
+
+    puts "**** User: #{user.to_yaml}"
   end
 
   def index?
@@ -37,5 +39,6 @@ class ApplicationPolicy
   def scope
     Pundit.policy_scope!(user, record.class)
   end
+  
 end
 

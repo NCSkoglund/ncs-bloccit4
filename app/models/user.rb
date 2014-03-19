@@ -6,8 +6,17 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
+  before_create :set_member  # from bloccit
+
   def role?(base_role)
     role == base_role.to_s
+  end
+  
+  # from bloccit
+  private
+
+  def set_member
+    self.role = 'member'
   end
   
 end
