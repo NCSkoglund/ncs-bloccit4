@@ -5,14 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :posts
-
-  before_create :set_member  # from bloccit
+  before_create :set_member 
+  mount_uploader :avatar, AvatarUploader
 
   def role?(base_role)
     role == base_role.to_s
   end
   
-  # from bloccit
   private
 
   def set_member

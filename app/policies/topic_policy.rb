@@ -4,7 +4,7 @@ class TopicPolicy < ApplicationPolicy
     true
   end
 
-  def show?
+  def show? 
     true
   end
 
@@ -13,7 +13,7 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user.role?(:admin)
+    create?
   end
 
 end
