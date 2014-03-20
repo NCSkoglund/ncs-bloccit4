@@ -55,3 +55,4 @@ end
 gem 'faker'
 gem 'devise'
 gem 'pundit'
+gem 'redcarpet'
