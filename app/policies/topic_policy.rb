@@ -4,10 +4,6 @@ class TopicPolicy < ApplicationPolicy
     true
   end
 
- # def show? 
- #   true
- # end
-
   def create?
     user.present? && user.role?(:admin)
   end

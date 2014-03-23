@@ -34,6 +34,17 @@ end
     # set the created_at to a time within the past year
     post.update_attribute(:created_at, Time.now - rand(600..31536000)) 
 
+    10.times do 
+      comment = Comment.create(
+        user: user,
+        post: post,
+        topic: topic,
+        title: Faker::Lorem.sentence,
+        body: Faker::Lorem.paragraph)
+        # set the created_at to a time within the past year
+        comment.update_attribute(:created_at, Time.now - rand(600..31536000))
+    end
+
     topics.rotate! 
   end
 end

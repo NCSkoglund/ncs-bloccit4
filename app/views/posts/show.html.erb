@@ -9,6 +9,15 @@
     </small><br/><br/>
     <%= image_tag(@post.image.url) if @post.image? %>
     <p><%= markdown @post.body %></p>
+
+    <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } if current_user %>
+    <hr />
+    <% if @post.comments.count > 0 %>
+      <%= render @comments %>
+    <% else %>
+      There are no comments to display.
+    <% end %>   
+
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
