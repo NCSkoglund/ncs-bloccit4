@@ -33,13 +33,13 @@ end
       body: Faker::Lorem.paragraph)
     # set the created_at to a time within the past year
     post.update_attribute(:created_at, Time.now - rand(600..31536000)) 
+    post.update_rank
 
-    10.times do 
+    rand(2..15).times do 
+      user = User.find(rand(1..User.count))
       comment = Comment.create(
-        user: user,
-        post: post,
-        topic: topic,
-        title: Faker::Lorem.sentence,
+        post_id: post.id,
+        user_id: user.id,
         body: Faker::Lorem.paragraph)
         # set the created_at to a time within the past year
         comment.update_attribute(:created_at, Time.now - rand(600..31536000))
@@ -48,6 +48,8 @@ end
     topics.rotate! 
   end
 end
+
+
 
 # Create an admin user
 admin = User.new(
