@@ -1,0 +1,15 @@
+<% if policy(Favorite.new).create? %>
+  <div class="favorite">
+    <% if favorite = current_user.favorited(post) %>
+      <%= link_to [topic, post, favorite], class: 'btn btn-danger', method: :delete do %>
+        <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+      <% end %>
+      Favorited
+    <% else %>
+      <!-- Note:  Not good practice to create a new model instance in a view -->
+      <%= link_to [topic, post, Favorite.new], class: 'btn btn-primary', method: :post do %>
+        <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
+      <% end %>
+    <% end %>  
+  </div>
+<% end %>
