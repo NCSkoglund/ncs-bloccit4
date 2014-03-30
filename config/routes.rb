@@ -1,12 +1,12 @@
 Bloccit4::Application.routes.draw do
  
-  get "comments/create"
   devise_for :users
 
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :index, :update]
 
+  resources :posts, only: [:index]
   resources :topics do
-    resources :posts, except: [:index] do
+    resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
       get '/up-vote' => 'votes#up_vote', as: :up_vote
