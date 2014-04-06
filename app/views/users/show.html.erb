@@ -30,6 +30,11 @@
       </div>
       <div class="tab-pane" id="comments">
         <%= render @user.comments %>
+
+        <% if nil %> 
+          <%= render CommentPolicy::Scope.new(current_user, @user.comments).resolve %>
+        <% end %>
+        
       </div>
     </div>
   </div>

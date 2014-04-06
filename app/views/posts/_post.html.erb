@@ -12,6 +12,9 @@
       submitted <%= time_ago_in_words(post.created_at) %> ago by 
       <%= link_to post.user.name, post.user %><br/>
       <%= pluralize(post.comments.count, 'comment') %>
+      <br/>
+      Rank:  <%= post.rank %><br/>
+      Created At: <%= post.created_at %>
     </small>
   </div>
 </div>
