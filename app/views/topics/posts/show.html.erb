@@ -16,15 +16,15 @@
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by
       <%= @post.user.name %>
-    </small>
+    </small><br/><br/>
     <%= image_tag(@post.image.url) if @post.image? %>
     <p><%= markdown @post.body %></p>
-
+    <hr/>
     <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } if current_user %>
     <hr />
     <h2 class='js-comments-count'><%= pluralize(@comments.count, 'comment') %></h2>
     <div class='js-comments'>
-      <%= @post.comments.count > 0 ? (render partial: 'comments/comment', collection: @comments) : "There are no comments to display."%>   
+      <%= render partial: 'comments/comment', collection: @comments if @post.comments.count > 0  %>   
     </div>
   </div>
 
