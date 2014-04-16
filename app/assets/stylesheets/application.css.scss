@@ -1,17 +1,104 @@
 @import "bootstrap";
 
+$body-bg: #e0eef5;
+$link-color: #005d69;
+$link-color-hover: darken($link-color, 15%);
+$blue1: #289faf;
+$blue2: #217f8a;
+
+// layout & index formatting
+
+body { background: $body-bg; }
+
+hr { border-bottom: 1px solid $blue2; }
+
 .user-info {
   margin-top: 9px;
 }
 
 .nav {
   margin-top: 5px;
+
+  & a { font-weight: bold; }
 }
+
+.nav-tabs {
+  border-bottom: 1px solid $link-color;
+
+  & li a:hover, & li a:focus {
+    background: linear-gradient(to bottom, $blue2, $blue1);
+    color: #fff;
+    border-color: $link-color;
+  }
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+.jumbotron {
+  background: linear-gradient(to bottom, $link-color, $blue1);
+  border: 1px solid $blue1;
+
+  & h1 {
+    color: #fff;
+    -webkit-text-shadow: 0 0 10px #454545;
+    -moz-text-shadow: 0 0 10px #454545;
+    text-shadow: 0 0 10px #454545;
+  } 
+  & p {
+    color: #fefefe;
+
+    & a {
+      background: #fefefe;
+      color: $link-color;
+
+      &:hover {
+        background: $blue1;
+      }
+    }
+  }
+}
+
+.btn-primary { 
+  background: $link-color; 
+  border: 1px solid $blue1; 
+
+  &:hover {
+    background: darken($link-color, 5%);
+  }
+}
+.btn-success { 
+  background: $blue1; 
+  border: 1px solid $link-color; 
+  
+  &:hover {
+    background: $link-color;
+  }
+
+}
+.btn-danger { border: 1px solid darkred; }
+
+.welcome { color: $link-color; }
+
+.bloccit4-wrapper{
+  border:1px solid $link-color;
+  background: #fff;
+  padding: 2%;
+}
+
+.col-md-4 { padding-left: 2%; }
 
 .vote-arrows {
   width: 40px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .voted {
@@ -24,4 +111,25 @@
 
 .js-hide {
   display:none;
+}
+
+footer {
+  color: #888;
+  text-align: center;
+  margin-top: 3%;
+}
+
+// User#show styling
+
+.tabbable .nav-tabs li.active a {
+  border: $link-color;
+}
+
+.tab-content {
+    margin-top: 2%;
+
+    & a, & a p {
+    color: $link-color;
+    font-weight: bold;
+    }
 }

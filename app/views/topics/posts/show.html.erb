@@ -1,26 +1,31 @@
 <div class='js-flash js-hide alert alert-success'>
   <button type='button' class='close' data-dismiss='alert'>&times;</button>
-  <p>Comment was successfully destroyed.</p>
+  <p class='js-flash-create js-hide'>Comment was successfully created.</p>
+  <p class='js-flash-destroy js-hide'>Comment was successfully destroyed.</p>
 </div>
 
 <div class="row">
   <div class="col-md-8">
+    <br/>
     <%= link_to "Back to Posts", topic_path(@topic), class: 'btn btn-success btn-sm' %>
-    <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    <div class="pull-right">
+      <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    </div>
     <h1><%= markdown @post.title %></h1>
     <small>
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by
-      <%= @post.user.name %><br/>
-      Rank:  <%= @post.rank %>
-    </small><br/><br/>
+      <%= @post.user.name %>
+    </small>
     <%= image_tag(@post.image.url) if @post.image? %>
     <p><%= markdown @post.body %></p>
 
     <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } if current_user %>
     <hr />
     <h2 class='js-comments-count'><%= pluralize(@comments.count, 'comment') %></h2>
-    <%= @post.comments.count > 0 ? (render partial: 'comments/comment', collection: @comments) : "There are no comments to display."%>   
+    <div class='js-comments'>
+      <%= @post.comments.count > 0 ? (render partial: 'comments/comment', collection: @comments) : "There are no comments to display."%>   
+    </div>
   </div>
 
   <div class="col-md-4">

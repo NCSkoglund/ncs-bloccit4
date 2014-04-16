@@ -1,9 +1,11 @@
 <% if policy(@comments).show? %>
+<div class="row">
+  <div class="col-md-8">
   <%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
     <%= link_to '#', class: 'pull-left' do %>
       <%= image_tag(comment.user.avatar.small.url) if comment.user.avatar? %>
     <% end %>
-    <div class="media-body">
+    <div class="media-body bloccit4-wrapper">
       <small>
         <%= link_to comment.user.name, comment.user %> commented <%= time_ago_in_words(comment.created_at) %> ago on <%= link_to comment.post.title, [comment.post.topic, comment.post] %>
         <% if policy(comment).destroy? %>
@@ -13,4 +15,7 @@
       <p><%= comment.body %></p>
     </div>
   <% end %>
+</div>
+</div>
+<br />
 <% end %>

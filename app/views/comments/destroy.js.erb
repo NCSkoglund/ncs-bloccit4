@@ -2,6 +2,8 @@
   $('#comment-' +<%= @comment.id %>).hide();
   $('.js-comments-count').html("<%= pluralize(@post.comments.count, 'Comment') %>"); 
   $('.js-flash').removeClass('js-hide'); 
+  $('.js-flash-destroy').removeClass('js-hide');
+  $('.js-flash-create').addClass('js-hide'); 
 <% else %>
   $('#comment-' +<%= @comment.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>

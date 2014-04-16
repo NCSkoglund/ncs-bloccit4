@@ -1,7 +1,7 @@
-<br/>
 <div class="row">
   <div class="col-md-8">
     <div class="media">
+      <br/>
       <% if @user.avatar? %>
         <%= image_tag @user.avatar.url, class: 'pull-left' %>
       <% end %>
@@ -29,13 +29,9 @@
         <%= render @posts %>
       </div>
       <div class="tab-pane" id="comments">
-        <%= render @user.comments %>
-
-        <% if nil %> 
-          <%= render CommentPolicy::Scope.new(current_user, @user.comments).resolve %>
-        <% end %>
-        
+        <%= render @comments %>
       </div>
+      <br/>
     </div>
   </div>
 </div>

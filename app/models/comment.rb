@@ -1,8 +1,10 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
+  has_one :topic, through: :post
   belongs_to :user
 
   default_scope { order('created_at DESC')}
+  scope :visible_to, ->(user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   validates :body, length: { minimum: 5 }, presence: true
 
